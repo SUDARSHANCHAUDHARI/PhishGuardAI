@@ -1,0 +1,16 @@
+Return-Path: <bounce@evil-login.example.net>
+From: "Example Support" <support@example.com>
+Reply-To: frauddesk@evil-login.example.net
+To: user@example.com
+Subject: Urgent: Verify now or account locked within 24 hours
+Authentication-Results: mx.example.com; spf=fail smtp.mailfrom=evil-login.example.net; dkim=fail; dmarc=fail
+Received-SPF: fail (mx.example.com: domain of evil-login.example.net does not designate permitted sender)
+Content-Type: text/plain; charset=utf-8
+
+Hello,
+
+Your account is locked. Verify now to restore access immediately:
+
+https://secure-account-update.evil-login.example.net/session
+
+You must complete this within 24 hours.

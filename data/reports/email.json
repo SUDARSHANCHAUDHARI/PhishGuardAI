@@ -1,0 +1,19 @@
+{
+  "authentication_results": "mx.example.com; spf=fail smtp.mailfrom=evil-login.example.net; dkim=fail; dmarc=fail",
+  "body": "Hello,\n\nYour account is locked. Verify now to restore access immediately:\n\nhttps://secure-account-update.evil-login.example.net/session\n\nYou must complete this within 24 hours.\n",
+  "from": "Example Support <support@example.com>",
+  "headers": {
+    "authentication-results": "mx.example.com; spf=fail smtp.mailfrom=evil-login.example.net; dkim=fail; dmarc=fail",
+    "content-type": "text/plain; charset=\"utf-8\"",
+    "from": "Example Support <support@example.com>",
+    "received-spf": "fail (mx.example.com: domain of evil-login.example.net does not designate permitted sender)",
+    "reply-to": "frauddesk@evil-login.example.net",
+    "return-path": "<bounce@evil-login.example.net>",
+    "subject": "Urgent: Verify now or account locked within 24 hours",
+    "to": "user@example.com"
+  },
+  "received_spf": "fail (mx.example.com: domain of evil-login.example.net does not designate permitted sender)",
+  "reply_to": "frauddesk@evil-login.example.net",
+  "return_path": "<bounce@evil-login.example.net>",
+  "subject": "Urgent: Verify now or account locked within 24 hours"
+}

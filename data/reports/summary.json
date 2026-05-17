@@ -1,0 +1,7 @@
+{
+  "explanation": "PhishGuard scored this email 100/100. Main signals: email.auth.spf_fail (1), email.auth.dkim_fail (1), email.auth.dmarc_fail (1), email.sender.reply_to_mismatch (1), email.sender.return_path_mismatch (1), email.content.urgency (1), email.link.suspicious_host (1). Review sender authenticity, avoid clicking links, and verify the request through a trusted channel.",
+  "findings": 7,
+  "from": "Example Support <support@example.com>",
+  "risk_score": 100,
+  "subject": "Urgent: Verify now or account locked within 24 hours"
+}

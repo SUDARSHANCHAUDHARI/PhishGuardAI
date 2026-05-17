@@ -1,0 +1,67 @@
+[
+  {
+    "evidence": {
+      "authentication_results": "mx.example.com; spf=fail smtp.mailfrom=evil-login.example.net; dkim=fail; dmarc=fail fail (mx.example.com: domain of evil-login.example.net does not designate permitted sender)"
+    },
+    "kind": "email.auth.spf_fail",
+    "severity": "high",
+    "summary": "SPF authentication failed."
+  },
+  {
+    "evidence": {
+      "authentication_results": "mx.example.com; spf=fail smtp.mailfrom=evil-login.example.net; dkim=fail; dmarc=fail fail (mx.example.com: domain of evil-login.example.net does not designate permitted sender)"
+    },
+    "kind": "email.auth.dkim_fail",
+    "severity": "high",
+    "summary": "DKIM authentication failed."
+  },
+  {
+    "evidence": {
+      "authentication_results": "mx.example.com; spf=fail smtp.mailfrom=evil-login.example.net; dkim=fail; dmarc=fail fail (mx.example.com: domain of evil-login.example.net does not designate permitted sender)"
+    },
+    "kind": "email.auth.dmarc_fail",
+    "severity": "high",
+    "summary": "DMARC authentication failed."
+  },
+  {
+    "evidence": {
+      "from_domain": "example.com",
+      "reply_to_domain": "evil-login.example.net"
+    },
+    "kind": "email.sender.reply_to_mismatch",
+    "severity": "high",
+    "summary": "Reply-To domain does not match From domain."
+  },
+  {
+    "evidence": {
+      "from_domain": "example.com",
+      "return_path_domain": "evil-login.example.net"
+    },
+    "kind": "email.sender.return_path_mismatch",
+    "severity": "medium",
+    "summary": "Return-Path domain does not match From domain."
+  },
+  {
+    "evidence": {
+      "matched_terms": [
+        "account locked",
+        "immediately",
+        "urgent",
+        "verify now",
+        "within 24 hours"
+      ]
+    },
+    "kind": "email.content.urgency",
+    "severity": "medium",
+    "summary": "Email uses urgency language common in phishing."
+  },
+  {
+    "evidence": {
+      "host": "secure-account-update.evil-login.example.net",
+      "url": "https://secure-account-update.evil-login.example.net/session"
+    },
+    "kind": "email.link.suspicious_host",
+    "severity": "high",
+    "summary": "Email links to a suspicious account-themed host."
+  }
+]
