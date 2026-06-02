@@ -1,76 +1,93 @@
 # PhishGuard AI
 
-[![Python](https://img.shields.io/badge/Python-3.12-blue)](#) [![Status](https://img.shields.io/badge/status-product%20polish-green)](#) [![Security](https://img.shields.io/badge/security-defensive%20lab-purple)](#)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](#requirements)
+[![Status](https://img.shields.io/badge/status-MVP-green)](#status)
+[![Security](https://img.shields.io/badge/security-defensive%20lab-purple)](#safe-use)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Phishing email analyzer that explains header, sender, language, and link risks in plain English.
+Phishing email analyzer. Parses `.eml` files, checks headers, link risk, sender spoofing, and language indicators, then explains findings in plain English.
 
-- **Portfolio group:** Product-style SaaS project
-- **Status:** Product polish implemented, tested, committed, and pushed to GitHub
-- **GitHub:** https://github.com/SUDARSHANCHAUDHARI/PhishGuardAI
-- **Local path:** `/Users/screencloudsudarshan/SUDARSHAN_CODE/sudarshan_repos/CyberSecurity/PhishGuardAI`
+---
 
-## MVP Snapshot
+## Overview
 
-This repository includes a working MVP with safe sample data, deterministic email analysis, local tests, JSON outputs, Markdown report, analyst triage handoff, and Docker demo support.
+PhishGuard AI is a defensive analysis tool that ingests a raw email (`.eml`) and produces a phishing risk assessment. It checks SPF/DKIM/DMARC alignment, sender display-name spoofing, suspicious link patterns, urgency/coercion language cues, and risky attachment indicators, then generates a plain-English explanation suitable for security awareness training and analyst handoff.
 
-## Safe Use
+The current MVP is a Python CLI. A FastAPI + React web dashboard is scaffolded under `apps/` for future development.
 
-This project is defensive and analysis-focused. Use only with logs, systems, repositories, and lab environments you own or have permission to assess.
+## Features
 
-## Core Features
+- Parses raw `.eml` files
+- Header analysis: SPF, DKIM, DMARC alignment
+- Sender display-name spoofing detection
+- Link risk scoring (typosquatting, redirects, suspicious TLDs)
+- Language analysis for urgency, coercion, and impersonation cues
+- Plain-English findings explanation
+- Outputs JSON findings, risk summary, Markdown report, and triage handoff
 
-- SPF/DKIM/DMARC check
-- suspicious links
-- sender mismatch
-- urgency language detection
-- AI explanation
-- risk score
-- severity breakdown
-- recommended response
-- analyst triage report
+## Requirements
 
-## Suggested Stack
+- Python 3.10 or newer
+- Linux, macOS, or Windows
+- No third-party Python packages (standard library only)
+- Optional: Docker for the demo container
 
-FastAPI, React, email parsing libraries, Docker.
-
-## Status
-
-Working CLI MVP.
-
-
-## Install
+## Installation
 
 ```bash
+git clone https://github.com/SUDARSHANCHAUDHARI/PhishGuardAI.git
+cd PhishGuardAI
 pip install .
 ```
 
-This registers the `phish-guard` command. Or run directly:
+This registers the `phish-guard` CLI command.
+
+To run without installing:
 
 ```bash
 python3 main.py --help
 ```
 
-## Quick Start
+## Usage
 
-Analyze the included safe phishing sample:
+Analyze the included sample phishing email:
 
 ```bash
-python3 -m apps.api.app.cli --email data/samples/phishing.eml --out-dir data/reports
+python3 main.py --email data/samples/phish-sample.eml --out-dir data/reports
 ```
 
-Run tests:
+Generated outputs in `data/reports/`:
+
+- `headers.json` — parsed email headers
+- `findings.json` — detected phishing indicators
+- `summary.json` — risk score and severity breakdown
+- `report.md` — plain-English Markdown analysis
+- `triage.md` — analyst triage checklist
+
+## Project Structure
+
+```
+PhishGuardAI/
+├── apps/
+│   ├── api/        FastAPI app scaffold (planned)
+│   └── web/        React/Next.js app scaffold (planned)
+├── data/
+│   ├── samples/    Safe sample .eml files
+│   └── reports/    Example generated output
+├── docker/         Dockerfile + compose support
+├── docs/           Architecture, security notes, demo
+├── scripts/        Setup, seed, run helpers
+├── tests/          Unit and integration tests
+├── main.py         CLI entrypoint
+├── pyproject.toml  Package metadata
+└── LICENSE
+```
+
+## Testing
 
 ```bash
 python3 -m unittest discover -s tests -p 'test_*.py'
 ```
-
-Generated outputs:
-
-- `data/reports/email.json`
-- `data/reports/findings.json`
-- `data/reports/summary.json`
-- `data/reports/report.md`
-- `data/reports/triage.md`
 
 ## Docker Demo
 
@@ -78,20 +95,29 @@ Generated outputs:
 docker compose run --rm api
 ```
 
-## Product Polish Capabilities
+## Safe Use
 
-- Parses `.eml` email files.
-- Checks SPF, DKIM, and DMARC authentication results.
-- Detects Reply-To and Return-Path sender mismatches.
-- Finds suspicious account-themed links.
-- Flags urgency language.
-- Generates JSON findings, JSON summary, and a Markdown phishing report.
-- Adds risk level, severity counts, recommended response, and triage checklist.
+This project is defensive and analysis-focused. Use only on emails you own or have explicit written permission to analyze. The included sample emails are synthetic and safe for public demo use.
+
+## Status
+
+Working Python CLI MVP. Web dashboard scaffold present but not yet implemented.
 
 ## Roadmap
 
-- Add attachment metadata inspection
-- Add brand impersonation checks
-- Add provider boundary for URL reputation enrichment
-- Add user submission workflow in the web UI
-- Add SOC queue export
+- Real-time SPF/DKIM/DMARC DNS lookups
+- Attachment sandboxing summary
+- Multi-language phishing detection
+- Mail server integration (IMAP, Microsoft Graph, Gmail API)
+- Web dashboard for analyst handoff
+
+## License
+
+Released under the [MIT License](LICENSE). You are free to use, modify, and distribute this software with attribution.
+
+## Author
+
+**Sudarshan Chaudhari** — [SudarshanTechLabs](https://github.com/SUDARSHANCHAUDHARI)
+Bangkok, Thailand
+
+For inquiries: open an issue on [GitHub](https://github.com/SUDARSHANCHAUDHARI/PhishGuardAI/issues).
