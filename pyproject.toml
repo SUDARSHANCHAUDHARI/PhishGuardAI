@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "phishguardai"
+version = "1.0.0"
+description = "Phishing email analyzer that explains header, sender, language, and link risks in plain English"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+
+[project.scripts]
+phish-guard = "apps.api.app.cli:main"
