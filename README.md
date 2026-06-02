@@ -37,6 +37,19 @@ FastAPI, React, email parsing libraries, Docker.
 
 Working CLI MVP.
 
+
+## Install
+
+```bash
+pip install .
+```
+
+This registers the `phish-guard` command. Or run directly:
+
+```bash
+python3 main.py --help
+```
+
 ## Quick Start
 
 Analyze the included safe phishing sample:
